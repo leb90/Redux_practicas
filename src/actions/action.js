@@ -1,14 +1,38 @@
+import {FETCHING_DATA,FETCHING_DATA_SUCCESS,FETCHING_DATA_FAILURE} from '../constants'
+import getDataApi from '../api'
 
-/**
- * Devuelve una acción de tipo ADD_TODO
- * @param  {String} text Texto del TODO
- * @return {Object}      Objecto de acción
- */
-function addTodo(text) {
-  return {
-      type: 'ADD_TODO',
-      payload: {
-          text,
-      },
-  };
+export const selected_tab = (tabId) =>{
+    return {
+        type: 'selected_tab',
+        playload: tabId
+    }
+}
+
+export const getData = () =>{
+    return {
+        type: 'FETCHING_DATA'
+    }
+}
+export const getDataSuccess = data => {
+    return {
+        type: 'FETCHING_DATA_SUCCESS',
+        data
+    }
+}
+
+export const getDataFailure = () =>{
+    return {
+        type: 'FETCHING_DATA_FAILURE'
+    }
+}
+
+export const fetchData = () =>{
+    return (dispatch) =>{
+        dispatch(getData())
+        getDataApi()
+            .then(([response, json]) =>{
+                dispatch(getDataSuccess(json))
+            })
+            .catch((err) => console.log(err))
+    }   
 }

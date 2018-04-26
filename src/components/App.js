@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import {createStore} from 'redux'
-import Reducers from '../reducers/reducers.js'
-import SuperHeroesList from '../SHComponent'
+import TabBar from './TabBar'
+import configureStore from '../configureStore'
+
+let store = configureStore()
 
 class App extends Component {
   render() {
     return (
-        <Provider store={createStore(Reducers)}>
+        <Provider store={store}>
           <div>
-            <SuperHeroesList/>
+            <TabBar/>
           </div>
         </Provider>
     );
