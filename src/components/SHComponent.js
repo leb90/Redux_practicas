@@ -12,7 +12,6 @@ class SHComponent extends Component {
     
     const {dataInf} = this.props
     return dataInf.data.map((data,key)=>{
-      console.log(data)
       return <div key={key}>{data.title}</div>
     })
   }
