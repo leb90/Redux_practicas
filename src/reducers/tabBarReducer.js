@@ -1,4 +1,4 @@
-export default (state = 'TAB_1',action)=>{
+export default (state = '',action)=>{
     switch(action.type){
       case 'selected_tab':
         return action.playload
