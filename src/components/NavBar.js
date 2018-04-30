@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Dehaze from 'material-ui/svg-icons/image/dehaze';
+import Auth from '../lib/Auth/Auth'
 
 import {fullWhite} from 'material-ui/styles/colors';
 class AppBarIcon extends Component {
@@ -30,6 +31,15 @@ class AppBarIcon extends Component {
     } else if (window.scrollY !== 0 && this.state.scrolling !== true) {
       this.setState({scrolling: true});
     }
+  }
+
+  handleLogOut= () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    localStorage.removeItem('userMail')
+    localStorage.removeItem('userName')
+    localStorage.removeItem('userRolId')
+    this.setState({auth: Auth()})
   }
 
   handleToggle = () => this.setState({open: !this.state.open});
@@ -73,7 +83,7 @@ class AppBarIcon extends Component {
           onRequestChange={(open) => this.setState({open})}
         >
           <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-          <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+          <MenuItem onClick={this.handleLogOut}>Salir</MenuItem>
         </Drawer>
       </div>
     )

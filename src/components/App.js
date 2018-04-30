@@ -10,7 +10,7 @@ import '../App.css';
 import Background from '../img/football.png'
 import BackgroundD from '../img/football-2.png'
 
-let store = configureStore()
+
 
 const style = {
   backgroundPosition: 'center',
@@ -27,17 +27,17 @@ const styleD = {
 class App extends Component {
   render() {
     return (
-        <Provider store={store}>
-          <MuiThemeProvider>
-            <div style={style}>
-              <NavBar/>
-              <TabBar/>
-            </div>
-            <div style={styleD}>
-              
-            </div>  
-          </MuiThemeProvider>
-        </Provider>
+        
+      <div>  
+        <div style={style}>
+          <NavBar/>
+          <TabBar/>
+        </div>
+        <div style={styleD}>
+          
+        </div>  
+      </div>
+
     );
   }
 }
